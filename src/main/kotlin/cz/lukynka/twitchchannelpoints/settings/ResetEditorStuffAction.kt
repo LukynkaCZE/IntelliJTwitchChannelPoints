@@ -10,7 +10,7 @@ class ResetEditorStuffAction: AnAction() {
     override fun actionPerformed(e: AnActionEvent) {
 
         FontEvent.setFont("Jetbrains Mono", "", false)
-        ThemeEvent.setTheme("ppy dark", "System")
+        ThemeEvent.setTheme("ppy Dark", "System")
         FontEvent.setFont("Jetbrains Mono", "", false)
     }
 }

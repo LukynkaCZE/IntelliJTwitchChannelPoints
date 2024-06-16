@@ -5,8 +5,6 @@ import com.intellij.notification.Notifications
 import com.intellij.notification.NotificationGroupManager
 import com.intellij.openapi.project.Project
 import com.intellij.openapi.project.ProjectManager
-import cz.lukynka.prettylog.LogType
-import cz.lukynka.prettylog.log
 import cz.lukynka.twitchchannelpoints.settings.Settings
 
 object Main {
@@ -28,7 +26,6 @@ object Main {
 
     fun load(reload: Boolean = false) {
 
-        log("Project (Re)Loaded", LogType.SUCCESS)
         val settings = Settings.current
 
         if(settings.twitchAPIToken.isEmpty() || settings.twitchClientId.isEmpty()) {

@@ -12,7 +12,7 @@ import javax.swing.JPanel
 
 class PluginSettingsConfigurable : Configurable {
     private val panel = JPanel(BorderLayout())
-    private val uploadButton = JButton("Upload JSON Configuration (icba with javafx)")
+    private val uploadButton = JButton("Upload JSON Configuration file")
 
     init {
         uploadButton.addActionListener(UploadButtonListener())

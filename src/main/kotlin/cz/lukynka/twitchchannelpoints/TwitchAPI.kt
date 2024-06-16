@@ -5,8 +5,6 @@ import com.github.twitch4j.TwitchClient
 import com.github.twitch4j.TwitchClientBuilder
 import com.github.twitch4j.pubsub.events.RewardRedeemedEvent
 import com.intellij.notification.NotificationType
-import cz.lukynka.prettylog.LogType
-import cz.lukynka.prettylog.log
 import cz.lukynka.twitchchannelpoints.Main.project
 import cz.lukynka.twitchchannelpoints.Main.showNotification
 import cz.lukynka.twitchchannelpoints.settings.Settings
@@ -50,11 +48,9 @@ class TwitchAPI(clientId: String, token: String) {
             "Successfully Connected!",
             NotificationType.INFORMATION
         )
-        log("Successfully connected to twitch!", LogType.SUCCESS)
     }
 
     private fun onRewardRedeemedEvent(event: RewardRedeemedEvent) {
-        log("Redeemed ${event.redemption.reward.title}")
         val redeemEvent = Settings.current.rewards.firstOrNull { it.name == event.redemption.reward.title } ?: return
 
         val value = if(redeemEvent.value == "_prompt") event.redemption.userInput else redeemEvent.value

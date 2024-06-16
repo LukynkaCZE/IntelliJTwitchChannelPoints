@@ -1,8 +1,6 @@
 package cz.lukynka.twitchchannelpoints.settings
 
 import com.intellij.openapi.components.*
-import cz.lukynka.prettylog.LogType
-import cz.lukynka.prettylog.log
 
 @Service
 @State(
@@ -20,7 +18,6 @@ class SettingsState : PersistentStateComponent<SettingsState> {
     }
 
     override fun loadState(state: SettingsState) {
-        log("Loaded settings state: ${state.twitchAPIToken} | ${state.twitchClientId}", LogType.SUCCESS)
 
         twitchClientId = state.twitchAPIToken
         twitchAPIToken = state.twitchClientId
@@ -34,7 +31,6 @@ class SettingsState : PersistentStateComponent<SettingsState> {
             val value = split[2]
             list.add(ChannelPointReward(name, type, value))
         }
-        log(list.toString(), LogType.DEBUG)
 
         Settings.current = SettingsData(twitchClientId, twitchAPIToken, twitchChannelId, list)
     }

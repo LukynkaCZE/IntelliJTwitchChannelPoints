@@ -17,7 +17,6 @@ repositories {
 }
 
 dependencies {
-    implementation("cz.lukynka:pretty-log:1.4")
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-core:1.3.0")
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.0")
     implementation("com.github.twitch4j:twitch4j:1.20.0")
@@ -56,4 +55,20 @@ tasks {
     publishPlugin {
         token.set(System.getenv("PUBLISH_TOKEN"))
     }
+
+    withType<org.jetbrains.intellij.tasks.PrepareSandboxTask> {
+        duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+        from(configurations.runtimeClasspath.get().map { if (it.isDirectory) it else zipTree(it) })
+    }
+
+    jar {
+        duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+        from(configurations.runtimeClasspath.get().map { if (it.isDirectory) it else zipTree(it) })
+    }
+
+    buildPlugin {
+        duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+        from(configurations.runtimeClasspath.get().map { if (it.isDirectory) it else zipTree(it) })
+    }
+
 }

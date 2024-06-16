@@ -3,7 +3,6 @@ package cz.lukynka.twitchchannelpoints.settings
 import com.intellij.notification.NotificationType
 import cz.lukynka.twitchchannelpoints.Main
 import kotlinx.serialization.Serializable
-import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.json.Json
 import org.jetbrains.concurrency.runAsync
 
