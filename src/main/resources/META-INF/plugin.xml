@@ -1,0 +1,38 @@
+<!-- Plugin Configuration File. Read more: https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html -->
+<idea-plugin>
+    <!-- Unique identifier of the plugin. It should be FQN. It cannot be changed between the plugin versions. -->
+    <id>cz.lukynka.twitch-channel-points</id>
+
+    <!-- Public plugin name should be written in Title Case.
+         Guidelines: https://plugins.jetbrains.com/docs/marketplace/plugin-overview-page.html#plugin-name -->
+    <name>Twitch Channel Point Rewards Integrations</name>
+
+    <!-- A displayed Vendor name or Organization ID displayed on the Plugins Page. -->
+    <vendor email="contact@lukynka.cz" url="https://www.github.com/LukynkaCZE">LukynkaCZE</vendor>
+
+    <!-- Description of the plugin displayed on the Plugin Page and IDE Plugin Manager.
+         Simple HTML elements (text formatting, paragraphs, and lists) can be added inside of <![CDATA[ ]]> tag.
+         Guidelines: https://plugins.jetbrains.com/docs/marketplace/plugin-overview-page.html#plugin-description -->
+    <description>Plugin that allows you to link your twitch channel point rewards to actions like changing theme, changing font, sending fake errors and etc.</description>
+
+    <!-- Product and plugin compatibility requirements.
+         Read more: https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html -->
+    <depends>com.intellij.modules.platform</depends>
+
+    <!-- Extension points defined by the plugin.
+         Read more: https://plugins.jetbrains.com/docs/intellij/plugin-extension-points.html -->
+    <extensions defaultExtensionNs="com.intellij">
+        <projectConfigurable instance="cz.lukynka.twitchchannelpoints.settings.PluginSettingsConfigurable"
+                             displayName="Twitch Channel Points Settings"/>
+        <notificationGroup id="Custom Notifications" displayType="BALLOON" />
+        <postStartupActivity implementation="cz.lukynka.twitchchannelpoints.settings.StartupListener"/>
+
+    </extensions>
+    <actions>
+        <action id="cz.lukynka.twitchchannelpoints.settings.ResetEditorStuffAction"
+                class="cz.lukynka.twitchchannelpoints.settings.ResetEditorStuffAction"
+                text="Reset Editor Style After Twitch Rewards">
+            <keyboard-shortcut keymap="$default" first-keystroke="alt R"/>
+        </action>
+    </actions>
+</idea-plugin>
