@@ -10,9 +10,7 @@ IntelliJ plugin that allows you to link your twitch channel point rewards to act
 
 ## Installation
 
-You can download the plugin from the JetBrains Marketplace
-
-<iframe width="245px" height="48px" src="https://plugins.jetbrains.com/embeddable/install/24641"></iframe>
+You can download the plugin from the [JetBrains Marketplace](https://plugins.jetbrains.com/embeddable/install/24641)
 
 ---
 
