@@ -1,3 +1,5 @@
+[![wakatime](https://wakatime.com/badge/github/LukynkaCZE/IntelliJTwitchChannelPoints.svg)](https://wakatime.com/badge/github/LukynkaCZE/IntelliJTwitchChannelPoints)
+
 # IntelliJ Twitch Channel Points Integration
 
 IntelliJ plugin that allows you to link your twitch channel point rewards to actions like changing theme, changing font, sending fake errors and etc 
