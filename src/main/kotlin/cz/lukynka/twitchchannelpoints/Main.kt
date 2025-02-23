@@ -12,6 +12,7 @@ object Main {
     var projects = ProjectManager.getInstance().openProjects
     lateinit var project: Project
     lateinit var twitchAPI: TwitchAPI
+    var loaded: Boolean = false
 
     fun showNotification(project: Project?, title: String, content: String, type: NotificationType, persistent: Boolean = false) {
         val notificationGroup = NotificationGroupManager.getInstance().getNotificationGroup("Custom Notifications")
@@ -26,6 +27,8 @@ object Main {
 
     fun load(reload: Boolean = false) {
 
+        if(loaded && !reload) return
+
         val settings = Settings.current
 
         if(settings.twitchAPIToken.isEmpty() || settings.twitchClientId.isEmpty()) {
@@ -34,7 +37,6 @@ object Main {
         }
 
         if(this::twitchAPI.isInitialized && !reload) return
-
 
         twitchAPI = TwitchAPI(Settings.current.twitchClientId, Settings.current.twitchAPIToken)
     }

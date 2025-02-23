@@ -49,6 +49,10 @@ class UploadButtonListener : ActionListener {
     }
 
     private fun parseJsonFile(file: File) {
+        if(!file.exists()) {
+            Messages.showMessageDialog("Failed to load Channel Points configuration: File not found!", "Error", Messages.getErrorIcon())
+        }
+
         try {
             Settings.parse(file.readText())
         } catch (ex: Exception) {

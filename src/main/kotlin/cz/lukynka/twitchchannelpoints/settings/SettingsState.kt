@@ -5,7 +5,8 @@ import com.intellij.openapi.components.*
 @Service
 @State(
     name = "cz.lukynka.twitchchannelpoints.SettingsState",
-    storages = [Storage("PluginSettings.xml")])
+    storages = [Storage("PluginSettings.xml")]
+)
 class SettingsState : PersistentStateComponent<SettingsState> {
 
     var twitchClientId: String = ""

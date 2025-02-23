@@ -31,7 +31,7 @@ object ThemeEvent {
                 theme,
                 true
             )
-            EditorColorsManager.getInstance().globalScheme = EditorColorsManager.getInstance().schemeForCurrentUITheme
+            EditorColorsManager.getInstance().setGlobalScheme(EditorColorsManager.getInstance().schemeForCurrentUITheme)
             if(show) Main.showNotification(Main.project, "Theme changed by $user!", theme.name, NotificationType.INFORMATION)
             FontEvent.setFont("Jetbrains Mono", "System", false)
         }

@@ -73,7 +73,7 @@ class TwitchAPI(clientId: String, token: String) {
             }
 
             "SHOW_EXCEPTION" -> {
-                showNotification(project, "io.kotlin.${event.redemption.user.displayName}SubmittedException:", value, NotificationType.ERROR)
+                showNotification(project, "tv.twitch.${event.redemption.user.displayName}SubmittedException:", value, NotificationType.ERROR, true)
             }
 
             else -> return
