@@ -38,6 +38,7 @@ object Main {
 
         if(this::twitchAPI.isInitialized && !reload) return
 
+        loaded = true
         twitchAPI = TwitchAPI(Settings.current.twitchClientId, Settings.current.twitchAPIToken)
     }
 }

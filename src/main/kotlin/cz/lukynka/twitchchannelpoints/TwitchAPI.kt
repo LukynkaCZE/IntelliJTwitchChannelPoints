@@ -5,6 +5,8 @@ import com.github.twitch4j.TwitchClient
 import com.github.twitch4j.TwitchClientBuilder
 import com.github.twitch4j.pubsub.events.RewardRedeemedEvent
 import com.intellij.notification.NotificationType
+import com.intellij.openapi.application.ApplicationManager
+import com.intellij.openapi.ui.Messages
 import cz.lukynka.twitchchannelpoints.Main.project
 import cz.lukynka.twitchchannelpoints.Main.showNotification
 import cz.lukynka.twitchchannelpoints.settings.Settings
@@ -53,7 +55,7 @@ class TwitchAPI(clientId: String, token: String) {
     private fun onRewardRedeemedEvent(event: RewardRedeemedEvent) {
         val redeemEvent = Settings.current.rewards.firstOrNull { it.name == event.redemption.reward.title } ?: return
 
-        val value = if(redeemEvent.value == "_prompt") event.redemption.userInput else redeemEvent.value
+        val value = if (redeemEvent.value == "_prompt") event.redemption.userInput else redeemEvent.value
 
         when (redeemEvent.type) {
             "SET_THEME" -> {
@@ -73,7 +75,9 @@ class TwitchAPI(clientId: String, token: String) {
             }
 
             "SHOW_EXCEPTION" -> {
-                showNotification(project, "tv.twitch.${event.redemption.user.displayName}SubmittedException:", value, NotificationType.ERROR, true)
+                ApplicationManager.getApplication().invokeLater {
+                    Messages.showErrorDialog(project, value, "Error by ${event.redemption.user.displayName}")
+                }
             }
 
             else -> return
